@@ -1,14 +1,28 @@
 from django.db import models
 
-# Create your models here.
 
-
-##ABSTRAÇAO
 class Pessoa():
+    nome = ''
+    data_nascimento = None
 
-    ##__init__ E O CONSTRUTOR , OU  MELHOR O INICIALIZADOR
-    def __init__(self,nome ,idade):
+    def __init__(self, nome, data_nascimento):
+        self.nome = nome
+        self.data_nascimento = data_nascimento
 
-    ##self e o 1° parametro formal em todos os metodos de instancia
-    def __str__(self):
-        return self.nome
+        def __str__(self):
+            return self.nome
+
+    ##HERANÇA
+class PessoaFisica(Pessoa):
+        def __init__(self, cpf):
+            self.cpf = cpf
+
+        def __str__(self):
+            return u'{} - {}'.format(self.cpf, self.nome)
+
+   ##ENCAPSULAMENTO
+
+
+    def __init__(self, nome, data_nascimento):
+        self.nome = nome
+        self.data_nascimento = data_nascimento
